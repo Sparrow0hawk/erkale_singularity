@@ -1,6 +1,25 @@
-Bootstrap: yum
-OSVersion: 7
-MirrorURL: http://mirror.centos.org/centos-%{OSVERSION}/%{OSVERSION}/os/$basearch/ 
+Bootstrap: docker
+From: ubuntu:18.04
+
+%post
+
+apt-get update -y
+apt-get -y install libatlas-base-dev libgsl0-dev libhdf5-dev libint-dev libxc-dev git wget
+wget https://raw.githubusercontent.com/susilehtola/erkale/master/compile.sh
+
+ls -l
+
+chmod +x ./compile.sh
+
+./compile.sh
 
 %runscript
-    echo "This worked!"
+
+ # No arguments, tell user what is available
+  if [ $# -eq 0 ]; then
+    echo "\nThis container provides the following executables:"
+    ls /opt/conda/bin
+    echo "\nExample usage: blastx.img blast [args] [options]"  
+  else
+    exec /opt/conda/bin/"$@"
+  fi

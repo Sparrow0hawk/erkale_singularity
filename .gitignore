@@ -1,1 +1,3 @@
 # gitignore for erkale singularity
+
+*.sif
