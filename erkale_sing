@@ -1,11 +1,14 @@
 Bootstrap: docker
 From: ubuntu:18.04
 
+%files
+
+  compile.sh
+
 %post
 
 apt-get update -y
-apt-get -y install libatlas-base-dev libgsl0-dev libhdf5-dev libint-dev libxc-dev git wget
-wget https://raw.githubusercontent.com/susilehtola/erkale/master/compile.sh
+apt-get -y install cmake build-essential libatlas-base-dev libgsl0-dev libhdf5-dev libint-dev libxc-dev git wget
 
 ls -l
 
@@ -19,7 +22,7 @@ chmod +x ./compile.sh
   if [ $# -eq 0 ]; then
     echo "\nThis container provides the following executables:"
     ls /opt/conda/bin
-    echo "\nExample usage: blastx.img blast [args] [options]"  
+    echo "\nExample usage: blastx.img blast [args] [options]"
   else
     exec /opt/conda/bin/"$@"
   fi
