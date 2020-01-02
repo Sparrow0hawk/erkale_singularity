@@ -8,7 +8,7 @@ From: ubuntu:18.04
 %post
 
 apt-get update -y
-apt-get -y install cmake build-essential libatlas-base-dev libgsl0-dev libhdf5-dev libint-dev libxc-dev git wget
+apt-get -y install libtool autogen pkg-config autoconf cmake build-essential libatlas-base-dev libgsl0-dev libhdf5-dev libint-dev libxc-dev git wget
 
 ls -l
 

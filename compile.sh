@@ -61,7 +61,7 @@ LAPACKSER="-lopenblas"
 # LAPACKSER="-llapack -lblas -lgfortran"
 
 # Use system packages?
-system_cmake=0
+system_cmake=1
 system_gsl=0
 system_libxc=0
 system_libint=0
