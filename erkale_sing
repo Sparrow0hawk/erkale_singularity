@@ -16,6 +16,16 @@ chmod +x ./compile.sh
 
 ./compile.sh
 
+%environment
+  ERKALE_LIBRARY=/build/erkale/basis
+  export ERKALE_LIBRARY
+
 %runscript
 
-exec /erkale/bin/"$@"
+# if the length of command line arguments is 0
+if [ $@ -eq 0 ]; then
+  echo "\nThis container provides the following executables:"
+  ls /erkale/bin
+else
+  exec /erkale/bin/"$@"
+fi
