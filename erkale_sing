@@ -8,7 +8,7 @@ From: ubuntu:18.04
 %post
 
 apt-get update -y
-apt-get -y install libtool autogen pkg-config autoconf cmake build-essential libatlas-base-dev libgsl0-dev libhdf5-dev libint-dev libxc-dev git wget
+apt-get -y install gfortran libtool autogen pkg-config autoconf cmake build-essential libatlas-base-dev libgsl0-dev libhdf5-dev libint-dev libxc-dev git wget
 
 ls -l
 
@@ -18,11 +18,4 @@ chmod +x ./compile.sh
 
 %runscript
 
- # No arguments, tell user what is available
-  if [ $# -eq 0 ]; then
-    echo "\nThis container provides the following executables:"
-    ls /opt/conda/bin
-    echo "\nExample usage: blastx.img blast [args] [options]"
-  else
-    exec /opt/conda/bin/"$@"
-  fi
+exec /erkale/bin/"$@"
