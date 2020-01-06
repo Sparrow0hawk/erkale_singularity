@@ -10,11 +10,11 @@ From: ubuntu:18.04
 apt-get update -y
 apt-get -y install gfortran libtool autogen pkg-config autoconf cmake build-essential libatlas-base-dev libgsl0-dev libhdf5-dev libint-dev libxc-dev git wget
 
-ls -l
-
 chmod +x ./compile.sh
 
 ./compile.sh
+
+echo 'export ERKALE_LIBRARY=/build/erkale/basis' >> $SINGULARITY_ENVIRONMENT
 
 %environment
   ERKALE_LIBRARY=/build/erkale/basis
