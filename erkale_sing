@@ -23,8 +23,8 @@ echo 'export ERKALE_LIBRARY=/build/erkale/basis' >> $SINGULARITY_ENVIRONMENT
 %runscript
 
 # if the length of command line arguments is 0
-if [ $@ -eq 0 ]; then
-  echo "\nThis container provides the following executables:"
+if [ "$@" -eq 0 ]; then
+  printf "This container provides the following executables:\n"
   ls /erkale/bin
 else
   exec /erkale/bin/"$@"
